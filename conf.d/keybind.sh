@@ -17,3 +17,18 @@ bindkey "\\en" history-beginning-search-forward-end
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
 bindkey '^m' do_enter
+
+# peco
+which peco > /dev/null 2>&1
+local which_peco=$?
+
+if [ $which_peco -eq 0 ]; then
+  function peco-history-selection() {
+      BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+      CURSOR=$#BUFFER
+      zle reset-prompt
+  }
+
+  zle -N peco-history-selection
+  bindkey '^R' peco-history-selection
+fi

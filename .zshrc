@@ -37,6 +37,13 @@ for conf_path in `find $SCRIPT_DIR/extra -name "*.sh"`; do
 done
 
 # ------------------------------
+# Load Submodules
+# ------------------------------
+. ${SCRIPT_DIR}/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. ${SCRIPT_DIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath=(${SCRIPT_DIR}/submodules/submodules/zsh-completions/src $fpath)
+
+# ------------------------------
 # original settings
 # ------------------------------
 fpath=(/usr/local/share/zsh-completions $fpath)
