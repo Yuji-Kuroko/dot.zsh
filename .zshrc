@@ -15,24 +15,26 @@ PROMPT=$'\U1F604 '
 # ------------------------------
 # Load configuration
 # ------------------------------
-. $SCRIPT_DIR/conf.d/terminal-color.sh
-. $SCRIPT_DIR/conf.d/history.sh
-. $SCRIPT_DIR/conf.d/alias.sh
-. $SCRIPT_DIR/conf.d/pager.sh
-. $SCRIPT_DIR/conf.d/keybind.sh
-. $SCRIPT_DIR/conf.d/screen.sh
+for conf_path in `find $SCRIPT_DIR/conf.d -name "*.sh"`; do
+  . $conf_path
+done
+
+# ------------------------------
+# Load configuration for platform
+# ------------------------------
+PLATFORM_SCRIPT_DIR=${SCRIPT_DIR}/platforms/`uname`
+if [ -d $PLATFORM_SCRIPT_DIR ];then
+  for conf_path in `find $PLATFORM_SCRIPT_DIR/conf.d -name "*.sh"`; do
+    . $conf_path
+  done
+fi
 
 # ------------------------------
 # Load Command
 # ------------------------------
-# find $SCRIPT_DIR/extend-commands -name "*.sh" -exec . {} \;
-. $SCRIPT_DIR/extra/cd.sh
-. $SCRIPT_DIR/extra/cd-git-root.sh
-. $SCRIPT_DIR/extra/ls_abbrev.sh
-. $SCRIPT_DIR/extra/ssh_screen.sh
-. $SCRIPT_DIR/extra/rprompt_git_current_branch.sh
-. $SCRIPT_DIR/extra/do_enter.sh
-. $SCRIPT_DIR/extra/history-ranking.sh
+for conf_path in `find $SCRIPT_DIR/extra -name "*.sh"`; do
+  . $conf_path
+done
 
 # ------------------------------
 # original settings

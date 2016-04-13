@@ -31,6 +31,11 @@ export PATH=$PATH:$ANDROID_HOME/build-tools
 export PATH=$PATH:$HOME/.cabal/bin
 
 # ------------------------------
+# User local script
+# ------------------------------
+export PATH=$PATH:$HOME/bin
+
+# ------------------------------
 # user custom commands
 # ------------------------------
 . $SCRIPT_DIR/skinny.sh

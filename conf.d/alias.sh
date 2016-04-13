@@ -25,14 +25,6 @@ alias su="su -l"
 alias va="vagrant"
 alias where="command -v"
 
-if [ "${PAGER}" != "less" ]; then
-  alias less=$PAGER
-fi
-
-alias ssh=ssh_screen
-alias osub="open -a Sublime\ Text\ 2"
-alias sublime=osub
-alias cot="open -a CotEditor"
-
-alias git=hub
-compdef hub=git
+# if [ "${PAGER}" != "less" ]; then
+#   alias less=${PAGER}
+# fi

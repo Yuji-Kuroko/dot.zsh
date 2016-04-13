@@ -1,2 +1,4 @@
 .zcompdump
 usercustom/*
+secrets/*
+!secrets/.gitkeep
