@@ -1,7 +1,7 @@
 # users generic .zshrc file for zsh(1)
 SCRIPT_DIR="${HOME}/dot.zsh"
 
-PROMPT=$'\U1F604 '
+#PROMPT=$'\U1F604 '
 # ------------------------------
 # Environment variable configuration
 # ------------------------------
@@ -40,7 +40,7 @@ done
 # Load Submodules
 # ------------------------------
 . ${SCRIPT_DIR}/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-. ${SCRIPT_DIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
+#. ${SCRIPT_DIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath=(${SCRIPT_DIR}/submodules/submodules/zsh-completions/src $fpath)
 
 # ------------------------------
