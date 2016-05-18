@@ -36,6 +36,11 @@ export PATH=$PATH:$HOME/.cabal/bin
 export PATH=$PATH:$HOME/bin
 
 # ------------------------------
+# nodebrew
+# ------------------------------
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# ------------------------------
 # user custom commands
 # ------------------------------
 . $SCRIPT_DIR/skinny.sh
