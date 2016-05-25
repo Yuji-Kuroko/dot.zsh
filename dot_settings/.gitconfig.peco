@@ -1,0 +1,13 @@
+# This is include file by .gitconfig
+# [include]
+# path = ~/dot.zsh/dot_settings/.gitconfig.peco
+
+[alias]
+  checkout-peco = !git checkout $(git branch | peco | sed -e 's/*//g' | head -n1)
+  branch-d = !git branch | peco | sed -e 's/*//g' | xargs -n1 git branch -d
+  log-peco = !git --no-pager log -n1 --pretty=format:"%B" $(git log --oneline | peco | head -n1 | awk '{print $1}')
+
+# short alias
+  co-p = checkout-peco
+  br-d = branch-d
+  log-p = !git log-peco
