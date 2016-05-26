@@ -2,7 +2,7 @@
 # Pager configuration
 # ------------------------------
 if [ -x "`which lv`" ]; then
-  export PAGER=lv
+  export PAGER='lv -c'
 elif [ -x "`which jless`" ]; then
   export PAGER=jless
 elif [ -x "`which less`" ]; then
