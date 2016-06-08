@@ -25,6 +25,9 @@ alias su="su -l"
 alias va="vagrant"
 alias where="command -v"
 
+alias urlencode="nkf -wMQ | tr = %"
+alias urldecode="nkf --url-input"
+
 # if [ "${PAGER}" != "less" ]; then
 #   alias less=${PAGER}
 # fi
