@@ -28,6 +28,11 @@ alias where="command -v"
 alias urlencode="nkf -wMQ | tr = %"
 alias urldecode="nkf --url-input"
 
+if [ -d ~/.ssh/conf.d ]; then
+  # feature "conf.d"
+  alias ssh=": > ~/.ssh/config && echo '# DO NOT EDIT! Please edit conf.d/' >> ~/.ssh/config && find ~/.ssh/conf.d -type f | xargs cat >> ~/.ssh/config; ssh"
+fi
+
 # if [ "${PAGER}" != "less" ]; then
 #   alias less=${PAGER}
 # fi
