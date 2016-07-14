@@ -33,6 +33,11 @@ if [ -d ~/.ssh/conf.d ]; then
   alias ssh=": > ~/.ssh/config && echo '# DO NOT EDIT! Please edit conf.d/' >> ~/.ssh/config && find ~/.ssh/conf.d -type f | grep -v '/\.git' | xargs cat >> ~/.ssh/config; ssh"
 fi
 
+# peco-collection
+alias find-p='print -z $(find . | peco)'
+alias find-d='print -z $(find . -type d | peco)'
+alias find-f='print -z $(find . -type f | peco)'
+
 # if [ "${PAGER}" != "less" ]; then
 #   alias less=${PAGER}
 # fi
