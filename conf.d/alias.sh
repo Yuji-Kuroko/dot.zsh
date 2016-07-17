@@ -38,6 +38,8 @@ alias find-p='print -z $(find . | peco)'
 alias find-d='print -z $(find . -type d | peco)'
 alias find-f='print -z $(find . -type f | peco)'
 
+alias ssh-p='print -z ssh $(cat ~/.ssh/config | grep "^Host" | sed "s/^Host //g" | peco | awk '\''{print $1}'\'')'
+
 # if [ "${PAGER}" != "less" ]; then
 #   alias less=${PAGER}
 # fi
