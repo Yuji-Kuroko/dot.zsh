@@ -34,13 +34,13 @@ if [ -d ~/.ssh/conf.d ]; then
 fi
 
 # peco-collection
-alias find-p='print -z $(find . | peco)'
-alias find-d='print -z $(find . -type d | peco)'
-alias find-f='print -z $(find . -type f | peco)'
+alias find-p=' print -z $(find . | peco)'
+alias find-d=' print -z $(find . -type d | peco)'
+alias find-f=' print -z $(find . -type f | peco)'
 
-alias ssh-p='print -z ssh $(cat ~/.ssh/config | grep "^Host" | sed "s/^Host //g" | peco | awk '\''{print $1}'\'')'
+alias ssh-p=' print -z ssh $(cat ~/.ssh/config | grep "^Host" | sed "s/^Host //g" | peco | awk '\''{print $1}'\'')'
 if [ -f ~/dot.zsh/tmp/projects_paths.txt ]; then
-  alias cd-p='print -z cd $(cat ~/dot.zsh/tmp/projects_paths.txt | sed "s;${HOME};~;g" | peco)'
+  alias cd-p=' print -z cd $(cat ~/dot.zsh/tmp/projects_paths.txt | sed "s;${HOME};~;g" | peco)'
 fi
 
 # if [ "${PAGER}" != "less" ]; then
