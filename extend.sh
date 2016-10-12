@@ -41,6 +41,11 @@ export PATH=$PATH:$HOME/bin
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # ------------------------------
+# yarn
+# ------------------------------
+export PATH=$HOME/.yarn/bin:$PATH
+
+# ------------------------------
 # direnv
 # ------------------------------
 if which direnv >/dev/null 2>&1; then
