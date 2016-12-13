@@ -39,6 +39,7 @@ fi
 alias find-p=' print -z $(find . | peco)'
 alias find-d=' print -z $(find . -type d | peco)'
 alias find-f=' print -z $(find . -type f | peco)'
+alias pushd-p='print -z pushd +$(dirs -v | peco | head -n1 | awk '\''{print $1}'\'')'
 
 alias ssh-p=' print -z ssh $(cat ~/.ssh/config | grep "^Host" | sed "s/^Host //g" | peco | awk '\''{print $1}'\'')'
 if [ -f ~/dot.zsh/tmp/projects_paths.txt ]; then
