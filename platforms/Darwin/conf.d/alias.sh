@@ -19,3 +19,5 @@ alias notice='terminal-notifier -message "finisshed the command"'
 # alias mv='gmv'
 # alias cp='gcp'
 # alias sed='gsed'
+
+alias ssh="color_change_ssh"
