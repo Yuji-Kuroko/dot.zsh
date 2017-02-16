@@ -18,6 +18,10 @@ color_change_ssh(){
   if alias ssh_config_update > /dev/null 2>&1; then
     ssh_config_update
   fi
+  if [ $# -eq 0 ] && alias ssh-p > /dev/null 2>&1; then
+    ssh-p
+    return 0
+  fi
   # [develop, staging, production]
   local level="$(echo $@[$#] | sed 's;.*@;;g' | xargs -I{} grep {} ~/.ssh/config | grep -o '#.*' | head -n1)"
   
