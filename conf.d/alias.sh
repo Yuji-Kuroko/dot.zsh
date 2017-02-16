@@ -10,6 +10,7 @@ linux*)
   ;;
 esac
 
+alias reload="source ~/dot.zsh/.zshrc"
 alias a=alias
 alias du="du -h"
 alias df="df -h"
