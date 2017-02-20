@@ -21,3 +21,4 @@ alias notice='terminal-notifier -message "finisshed the command"'
 # alias sed='gsed'
 
 alias ssh="color_change_ssh"
+alias clear_term_bgcolor="set_term_bgcolor 0 0 0"
