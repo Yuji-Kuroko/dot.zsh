@@ -24,6 +24,7 @@ alias sc="screen -D -RR"
 alias screen="screen -D -RR"
 alias su="su -l"
 alias va="vagrant"
+alias va-running-list="va global-status | grep running | awk '{print $5}'"
 alias where="command -v"
 
 alias urlencode="nkf -wMQ | tr = %"

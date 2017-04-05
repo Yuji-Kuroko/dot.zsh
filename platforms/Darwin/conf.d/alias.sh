@@ -22,3 +22,7 @@ alias notice='terminal-notifier -message "finisshed the command"'
 
 alias ssh="color_change_ssh"
 alias clear_term_bgcolor="set_term_bgcolor 0 0 0"
+
+if which rmtrash > /dev/null 2>&1; then
+  alias rm=rmtrash
+fi
