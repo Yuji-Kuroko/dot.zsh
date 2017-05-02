@@ -6,7 +6,7 @@ alias chrome="open -a /Applications/Google\ Chrome.app"
 alias st="open -a SourceTree"
 
 alias ex="bundle exec"
-alias ssh-list="lv ~/.ssh/config"
+alias ssh-list="cat ~/.ssh/config ~/.ssh/conf.d/**/*.conf | less"
 # rails alias
 alias rails_start="ex rails s -d"
 alias rails_stop="cat ./tmp/pids/server.pid | xargs kill"

@@ -23,8 +23,8 @@ color_change_ssh(){
     return 0
   fi
   # [develop, staging, production]
-  local level="$(echo $@[$#] | sed 's;.*@;;g' | xargs -I{} grep {} ~/.ssh/config | grep -o '#.*' | head -n1)"
-  
+  local level="$(echo $@[$#] | sed 's;.*@;;g' | xargs -I{} grep {} <(ssh-list) | grep -o '#.*' | head -n1)"
+
   if [[ $level =~ 'develop' ]]; then
     set_term_bgcolor 0 0 60
   elif [[ $level =~ 'staging' ]]; then
