@@ -53,6 +53,11 @@ if which direnv >/dev/null 2>&1; then
 fi
 
 # ------------------------------
+# zsh
+# ------------------------------
+setopt extended_glob
+
+# ------------------------------
 # user custom commands
 # ------------------------------
 . $SCRIPT_DIR/skinny.sh
