@@ -1,0 +1,95 @@
+# Please write it in ~/.gitconfig
+# [include]
+# 	path = ~/dot.zsh/dot_settings/.gitconfig
+
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
+	grep = auto
+
+[pager]
+	log = diff-highlight | nkf -w | LESS=-R less
+	show = diff-highlight | nkf -w | LESS=-R less
+	diff = diff-highlight | nkf -w | LESS=-R less
+
+
+[core]
+#	excludesfile = ~/.gitignore_global
+	autocrlf = false
+	quotepath = false
+
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+
+[push]
+	default = upstream
+
+[pull]
+	rebase = true
+
+[branch]
+	autosetuprebase = always
+
+[alias]
+	# log
+	ranking = shortlog -s -n --no-merges
+	authorlog = "!f() { git log --no-merges --author=$1 --date=short --pretty=format:\"%Cgreen%h %Cblue%cd %Cred%cn%x09%Creset%s\" ;}; f"
+	logl = log --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn%x09%Creset%s'
+	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+	branch-graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	log-recent = log -n1 --pretty=format:"%B"
+	graph = log --oneline --decorate --all --graph
+
+	# branch
+	br = branch -vv
+	no-merged-branch = branch -vv --no-merged
+	merged-branch = branch -vv --merged
+	clean-merged-branch = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+
+	# reset & clean
+	reseth = reset --hard
+	reset-clean = !git reset --hard HEAD && git clean -f -d
+
+	# pull
+	# pull-all = "!f() { git fetch origin; for branch in `git branch -r | grep origin | grep -v HEAD | awk -F'/' '{print $2}'`; do git checkout $branch; done;}; f"
+
+	# push
+	push-current = push -u origin `my_branch`
+
+	# checkout
+	#co = "!f() { git checkout $1;}; f"
+	co = checkout
+        co-issue = "!f() { git branch | grep $1 | xargs git co; }; f"
+
+	# work
+	difff = diff --word-diff
+	cherry-color = "!f() { git cherry -v "$@" | awk '{ if($1 == \"+\"){ color = \"green\" } if($1 == \"-\"){ color = \"red\" } cmd = \"git show --date=short --no-notes --pretty=format:\\047%C\" color $1 \" %h %Cgreen%cd %Cblue%cn%x09%Creset%s\\047 --summary \" $2; cmd | getline t; close(cmd); print t }' ;}; f"
+	cherry-ticket-numbers = "!f() { git cherry -v "$@" | cut -b 44- | awk 'match($0, /#[0-9]+/) {print substr($0, RSTART, RLENGTH)}' | sort -u ;}; f"
+
+	# unmerge
+	add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+	delete-unmerged =  "!f() { git ls-files --deleted | cut -f2 | sort -u ; }; git rm `f`"
+	edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+
+	# diff   diff with 1 prev commit
+	prev-diff = "!f() { git diff ${1}^ ${1} ;};f"
+
+	# branch select
+	branch-select = "!f() { git branch | peco | sed 's;*;;g' | xargs git checkout ;};f"
+	co-select = "!f() { git branch-select ;};f"
+
+	# log
+	logg = log --decorate
+
+	# short
+	s = status --short
+	see = browse
+	see-issue = "!f() { hub see -- issues/${1};}; f"
+
+[include]
+	path = ~/dot.zsh/dot_settings/.gitconfig.peco
+# [init]
+# 	templatedir = ~/.git_template
