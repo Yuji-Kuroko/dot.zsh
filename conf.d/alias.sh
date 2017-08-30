@@ -31,6 +31,7 @@ alias urlencode="nkf -wMQ | tr = %"
 alias urldecode="nkf --url-input"
 
 alias ymd="date +'%Y%m%d'"
+alias ymdhms="date +'%Y%m%d%H%M%S'"
 
 # This code is deprecated because openSSH got 'Include' directive.
 # Please write the config 'Include ~/.ssh/conf.d/**/*.conf'
