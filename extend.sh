@@ -2,9 +2,12 @@ export BLOCKSIZE=K
 export EDITOR=vi
 
 # ------------------------------
-# Ruby
+# anyenv or Ruby
 # ------------------------------
-if [[ -s /usr/local/bin/rbenv ]] ; then
+if [[ -s $HOME/.anyenv ]] ; then
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"  
+elif [[ -s /usr/local/bin/rbenv ]] ; then
   # rbenv
   eval "$(rbenv init - zsh)"
 elif [[ -s $HOME/.rvm/scripts/rvm ]] ; then
