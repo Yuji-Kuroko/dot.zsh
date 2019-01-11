@@ -52,6 +52,8 @@ if [ -f ~/dot.zsh/tmp/projects_paths.txt ]; then
   alias cd-p=' print -z cd $(cat ~/dot.zsh/tmp/projects_paths.txt | sed "s;${HOME};~;g" | peco)'
 fi
 
+# unicode decorder (\u1111 etc...)
+alias unicode_decode="sed -e 's/\\\\u\(....\)/\&#x\1;/g' | nkf --numchar-input"
 # if [ "${PAGER}" != "less" ]; then
 #   alias less=${PAGER}
 # fi
