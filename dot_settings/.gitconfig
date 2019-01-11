@@ -62,7 +62,7 @@
 	# checkout
 	#co = "!f() { git checkout $1;}; f"
 	co = checkout
-        co-issue = "!f() { git branch | grep $1 | xargs git co; }; f"
+  co-issue = "!f() { git branch | grep $1 | xargs git co; }; f"
 
 	# work
 	difff = diff --word-diff
@@ -83,6 +83,7 @@
 
 	# log
 	logg = log --decorate
+	log-pr = "!f() { git log $1 --pretty='%s %b' | grep 'Merge pull request' | cut -d ' ' -f 4,7- | xargs -I{} echo '* {}' ;};f"
 
 	# short
 	s = status --short
