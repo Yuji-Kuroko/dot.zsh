@@ -1,16 +1,10 @@
 # users generic .zshrc file for zsh(1)
 SCRIPT_DIR="${HOME}/dot.zsh"
 
-#PROMPT=$'\U1F604 '
-# ------------------------------
-# Environment variable configuration
-# ------------------------------
+. ${SCRIPT_DIR}/path.sh
 . ${SCRIPT_DIR}/environment.sh
-
-# ------------------------------
-# Default shell configuration
-# ------------------------------
 . ${SCRIPT_DIR}/default.sh
+. ${SCRIPT_DIR}/init.sh
 
 # ------------------------------
 # Load configuration
@@ -35,17 +29,5 @@ fi
 for conf_path in `find $SCRIPT_DIR/extra -name "*.sh"`; do
   . $conf_path
 done
-
-# ------------------------------
-# Load Submodules
-# ------------------------------
-. ${SCRIPT_DIR}/submodules/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#. ${SCRIPT_DIR}/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
-fpath=(${SCRIPT_DIR}/submodules/submodules/zsh-completions/src $fpath)
-
-# ------------------------------
-# original settings
-# ------------------------------
-fpath=(/usr/local/share/zsh-completions $fpath)
 
 . ${SCRIPT_DIR}/extend.sh

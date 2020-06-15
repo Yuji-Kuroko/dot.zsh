@@ -10,7 +10,7 @@ linux*)
   ;;
 esac
 
-alias reload="source ~/dot.zsh/.zshrc"
+alias reload="exec $SHELL -l"
 alias a=alias
 alias du="du -h"
 alias df="df -h"
@@ -20,7 +20,6 @@ alias la="ls -aF"
 alias lf="ls -F"
 alias ll="ls -lF"
 alias lla="ls -alF"
-alias sc="screen -D -RR"
 alias screen="screen -D -RR"
 alias su="su -l"
 alias va="vagrant"
@@ -32,14 +31,6 @@ alias urldecode="nkf --url-input"
 
 alias ymd="date +'%Y%m%d'"
 alias ymdhms="date +'%Y%m%d%H%M%S'"
-
-# This code is deprecated because openSSH got 'Include' directive.
-# Please write the config 'Include ~/.ssh/conf.d/**/*.conf'
-# if [ -d ~/.ssh/conf.d ]; then
-#   # feature "conf.d"
-#   alias ssh_config_update=": > ~/.ssh/config && echo '# DO NOT EDIT! Please edit conf.d/' >> ~/.ssh/config && find ~/.ssh/conf.d -type f | grep -v '/\.git' | xargs cat >> ~/.ssh/config"
-#   alias ssh="ssh_config_update; ssh"
-# fi
 
 # peco-collection
 alias find-p=' print -z $(find . | peco)'
@@ -54,6 +45,3 @@ fi
 
 # unicode decorder (\u1111 etc...)
 alias unicode_decode="sed -e 's/\\\\u\(....\)/\&#x\1;/g' | nkf --numchar-input"
-# if [ "${PAGER}" != "less" ]; then
-#   alias less=${PAGER}
-# fi
