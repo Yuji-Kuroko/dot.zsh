@@ -1,2 +1,1 @@
-cd $(dirname "${0}")/../bin
-PATH=$PATH:$(pwd)
+PATH=$PATH:$(cd $(dirname "${0}")/../bin && pwd)
