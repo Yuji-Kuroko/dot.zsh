@@ -8,10 +8,24 @@ autoload colors
 colors
 setopt prompt_subst
 
+# apple silicon arch display
+APPLE_SILICON_DISPLAY=""
+if test $(uname) = "Darwin" && arch -arm64e echo ok &>/dev/null; then
+  if [ "$(uname -m)" = "x86_64" ]; then
+    APPLE_SILICON_DISPLAY=" %F{magenta}x86_64%f%F{cyan}"
+  elif [ "$(uname -m)" = "arm64" ]; then
+    APPLE_SILICON_DISPLAY=" %F{white}arm64%f%F{cyan}"
+  else
+    APPLE_SILICON_DISPLAY=" %F{white}UNKNOWN%f%F{cyan}"
+  fi
+fi
+
+PROMPT="%B%{[36m%}[%n@%m${APPLE_SILICON_DISPLAY}]#%{[m%}%b "
+
 case ${UID} in
 0)
   [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-  PROMPT="%B%{[36m%}[%n@%m]#%{[m%}%b "
+  PROMPT="%B%{[36m%}[%n@%m${APPLE_SILICON_DISPLAY}]#%{[m%}%b "
   PROMPT2="%B%{[31m%}%_#%{[m%}%b "
   RPROMPT="%{[36m%}(`rprompt_git_current_branch`%{[36m%}%~%)%{[m%}"
   SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
@@ -19,7 +33,7 @@ case ${UID} in
   PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
   ;;
 *)
-  PROMPT="%{[36m%}[%n@%m]%%%{[m%} "
+  PROMPT="%{[36m%}[%n@%m${APPLE_SILICON_DISPLAY}]%%%{[m%} "
   PROMPT2="%{[31m%}%_%%%{[m%} "
   RPROMPT='%{[36m%}(`rprompt_git_current_branch`%{[36m%}%~%)%{[m%}'
   SPROMPT="%{[31m%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
