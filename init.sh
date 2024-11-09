@@ -1,3 +1,5 @@
+# NOTE: /platforms/Darwin/conf.d/apple_silicon.sh にもinitするコードが有る。
+#   このファイルを編集したら、apple_silicon.sh側も合わせること
 if type direnv >/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
