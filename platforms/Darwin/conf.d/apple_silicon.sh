@@ -6,20 +6,23 @@ if arch -arm64e echo ok &>/dev/null; then
   homebrew_arm_path=${APPLE_SILICON_ARM_BREW_PATH:-"/opt/homebrew"}
   homebrew_x86_path=${APPLE_SILICON_X86_BREW_PATH:-"/usr/local"}
 
-  # x86_64モードでもarm64 brewで入れたコマンドを使いたい
+
+  homebrew_using_path=""
+  # brewコマンドは常に現在のarchに従ったものを使う ()
+  if [[ "$arch_suffix" == "arm64" ]]; then
+    homebrew_using_path=${homebrew_arm_path}/bin
+  elif [[ "$arch_suffix" == "x86_64" ]]; then
+    homebrew_using_path=${homebrew_x86_path}/bin
+  fi
+
+  # arm / x86 で完全にパスを分離しておかないと、
+  # asdf などでlibが誤検知されてx86でlibのインストールやpipネイティブエクステンションがインストールできない。
+  # arm / x86 でbrewのソフトは共有できないことを許容する
   path=(
-    ${homebrew_arm_path}/bin(-N)
-    ${homebrew_x86_path}/bin(-N)
+    ${homebrew_using_path}(-N)
     # /opt/homebrew-${arch_suffix}/bin(-N)
     $path
   )
-
-  # brewコマンドは常に現在のarchに従ったものを使う ()
-  if [[ "$arch_suffix" == "arm64" ]]; then
-    alias brew=${homebrew_arm_path}/bin/brew
-  elif [[ "$arch_suffix" == "x86_64" ]]; then
-    alias brew=${homebrew_x86_path}/bin/brew
-  fi
 
   if [ -d /opt/asdf-${arch_suffix} ]; then
     export ASDF_DIR=/opt/asdf-${arch_suffix}
@@ -42,8 +45,8 @@ if arch -arm64e echo ok &>/dev/null; then
   #
   # fi
 
-  alias a64="unset PATH && /usr/bin/arch -arm64e /bin/zsh"
-  alias x64="unset PATH && /usr/bin/arch -x86_64 /bin/zsh"
+  alias a64="unset PATH && /usr/bin/arch -arm64e /bin/zsh -l"
+  alias x64="unset PATH && /usr/bin/arch -x86_64 /bin/zsh -l"
   alias arm=a64
   alias x86=x64
 
