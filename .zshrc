@@ -31,3 +31,9 @@ for conf_path in `find $SCRIPT_DIR/extra -name "*.sh"`; do
 done
 
 . ${SCRIPT_DIR}/extend.sh
+
+# ------------------------------
+# Remove Duplication Path
+# ------------------------------
+
+typeset -U PATH
