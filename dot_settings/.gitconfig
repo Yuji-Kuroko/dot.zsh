@@ -10,9 +10,9 @@
 	grep = auto
 
 [pager]
-	log = diff-highlight | nkf -w | LESS=-R less
-	show = diff-highlight | nkf -w | LESS=-R less
-	diff = diff-highlight | nkf -w | LESS=-R less
+	#log = diff-highlight | nkf -w | LESS=-R less
+	#show = diff-highlight | nkf -w | LESS=-R less
+	#diff = diff-highlight | nkf -w | LESS=-R less
 
 
 [core]
