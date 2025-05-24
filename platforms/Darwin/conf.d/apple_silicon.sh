@@ -35,7 +35,7 @@ if arch -arm64e echo ok &>/dev/null; then
       $path
     )
     
-    . /opt/asdf-${arch_suffix}/asdf.sh
+    #. /opt/asdf-${arch_suffix}/asdf.sh
   fi
   
 
